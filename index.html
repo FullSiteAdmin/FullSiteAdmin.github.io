@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Сайт | Розробка сайтів під ключ</title>
+    <meta
+      name="description"
+      content="Full Сайт — розробка сайтів під ключ, landing page, сайт-візитка, корпоративні сайти, інтернет-магазини та просування в Google."
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+      :root {
+        --bg: #f7f3ee;
+        --bg-alt: #efe6d8;
+        --panel: rgba(255, 255, 255, 0.72);
+        --panel-strong: #fffdf9;
+        --ink: #1f2a2b;
+        --ink-soft: #53656a;
+        --line: rgba(31, 42, 43, 0.12);
+        --forest: #0d5d50;
+        --forest-strong: #0a4e44;
+        --sun: #f5bf58;
+        --coral: #d86e4a;
+        --sand: #e8d9be;
+        --shadow: 0 22px 60px rgba(14, 24, 30, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --container: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Manrope', sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(245, 191, 88, 0.22), transparent 30%),
+          linear-gradient(180deg, #f7f3ee 0%, #f6f2eb 100%);
+        color: var(--ink);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.95rem 1.5rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, var(--forest) 0%, #0d7b6d 100%);
+        color: white;
+        box-shadow: 0 16px 28px rgba(13, 93, 80, 0.25);
+        margin-top: 20px;
+      }
+
+      .button-secondary {
+        background: rgba(17, 24, 39, 0.03);
+        color: var(--ink);
+        border-color: var(--line);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(18px);
+        background: rgba(247, 243, 238, 0.7);
+        border-bottom: 1px solid rgba(31, 42, 43, 0.08);
+      }
+
+      .nav {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 800;
+        font-size: 1.15rem;
+      }
+
+      .brand-mark {
+        width: 2.3rem;
+        height: 2.3rem;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--forest) 0%, #1d8a7a 100%);
+        color: white;
+        font-size: 1.1rem;
+        box-shadow: 0 14px 24px rgba(13, 93, 80, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.3rem;
+        color: var(--ink-soft);
+        font-weight: 600;
+        font-size: 0.96rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding-bottom: 0.2rem;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.15rem;
+        width: 100%;
+        height: 2px;
+        background: var(--forest);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.18s ease;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+        border-radius: 999px;
+        border: 1px solid rgba(13, 93, 80, 0.2);
+        background: rgba(13, 93, 80, 0.06);
+        color: var(--forest-strong);
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .section {
+        padding: 5.5rem 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--forest);
+        background: rgba(13, 93, 80, 0.08);
+        border: 1px solid rgba(13, 93, 80, 0.1);
+        border-radius: 999px;
+        padding: 0.55rem 0.85rem;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero h1 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2.8rem, 4vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: 0em;
+        font-weight: 800;
+      }
+
+      .hero h1 .accent {
+        display: block;
+        color: var(--forest);
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        font-size: 1.06em;
+      }
+
+      .hero-copy > p:not(.eyebrow) {
+        max-width: 34rem;
+        font-size: 1.08rem;
+        color: var(--ink-soft);
+        line-height: 1.7;
+        margin: 0 0 1.5rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-points {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .hero-points li {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.8rem 0.9rem;
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.28);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .hero-points li::before {
+        content: '✓';
+        width: 1.6rem;
+        height: 1.6rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(13, 93, 80, 0.12);
+        color: var(--forest);
+        font-weight: 800;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .visual-card {
+        position: relative;
+        padding: 1rem;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .mock-window {
+        position: relative;
+        min-height: 520px;
+        padding: 1.1rem;
+        border-radius: 26px;
+        background: linear-gradient(180deg, #dde6e4 0%, #eef3f0 100%);
+        border: 1px solid rgba(31, 42, 43, 0.12);
+        overflow: hidden;
+      }
+
+      .mock-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .dots {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .dots span {
+        display: block;
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        background: rgba(31, 42, 43, 0.25);
+      }
+
+      .window-pill {
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--forest);
+        background: rgba(13, 93, 80, 0.12);
+      }
+
+      .mock-layout {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 1rem;
+        min-height: 430px;
+      }
+
+      .mock-sidebar {
+        padding: 1rem;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+      }
+
+      .mini-profile {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .avatar {
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--sun), var(--coral));
+      }
+
+      .mini-profile strong {
+        display: block;
+        font-size: 0.8rem;
+      }
+
+      .mini-profile span {
+        color: var(--ink-soft);
+        font-size: 0.72rem;
+      }
+
+      .mini-nav {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .mini-nav span {
+        display: block;
+        height: 0.7rem;
+        border-radius: 999px;
+        background: rgba(31, 42, 43, 0.08);
+      }
+
+      .mini-nav span:nth-child(1) { width: 72%; }
+      .mini-nav span:nth-child(2) { width: 88%; }
+      .mini-nav span:nth-child(3) { width: 65%; }
+      .mini-nav span:nth-child(4) { width: 95%; }
+
+      .mock-content {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .content-panel {
+        padding: 1rem;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.75);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+      }
+
+      .content-panel .big-line {
+        display: block;
+        height: 0.92rem;
+        border-radius: 999px;
+        background: rgba(31, 42, 43, 0.08);
+        margin-bottom: 0.8rem;
+      }
+
+      .content-panel .big-line:nth-child(1) { width: 50%; }
+      .content-panel .big-line:nth-child(2) { width: 80%; }
+      .content-panel .big-line:nth-child(3) { width: 68%; }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0,1fr));
+        gap: 0.8rem;
+      }
+
+      .stat {
+        padding: 1rem 0.8rem;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(245,191,88,0.18), rgba(13,93,80,0.08));
+        border: 1px solid rgba(31, 42, 43, 0.05);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--forest);
+      }
+
+      .stat span {
+        display: block;
+        color: var(--ink-soft);
+        font-size: 0.72rem;
+        margin-top: 0.5rem;
+      }
+
+      .floating-badge {
+        position: absolute;
+        right: -0.5rem;
+        bottom: 1rem;
+        padding: 0.9rem 1rem;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.8);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        box-shadow: 0 18px 40px rgba(13, 93, 80, 0.12);
+        color: var(--ink);
+      }
+
+      .floating-badge strong {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--forest);
+      }
+
+      .floating-badge span {
+        color: var(--ink-soft);
+        font-size: 0.74rem;
+      }
+
+      .trust-bar {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .trust-item {
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.5);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        color: var(--ink-soft);
+        font-weight: 700;
+      }
+
+      .section-head {
+        max-width: 720px;
+        margin-bottom: 2rem;
+      }
+
+      .section-head h2 {
+        margin: 1rem 0 0.8rem;
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 1.05;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 1.06rem;
+        line-height: 1.7;
+      }
+
+      .service-grid,
+      .pricing-grid,
+      .promotion-grid,
+      .step-grid,
+      .contact-grid {
+        display: grid;
+        gap: 1.4rem;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .panel {
+        background: rgba(255,255,255,0.56);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        border-radius: var(--radius-lg);
+        padding: 1.4rem;
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
+      }
+
+      .service-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      .service-card .icon {
+        width: 3rem;
+        height: 3rem;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(245, 191, 88, 0.2), rgba(13, 93, 80, 0.12));
+        color: var(--forest);
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        margin: 0 0 0.8rem;
+        font-size: 1.3rem;
+      }
+
+      .service-card p {
+        margin: 0 0 1.2rem;
+        color: var(--ink-soft);
+        line-height: 1.65;
+      }
+
+      .service-card .price {
+        margin-top: auto;
+        display: inline-block;
+        padding-top: 0.8rem;
+        border-top: 1px solid rgba(31, 42, 43, 0.08);
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--forest);
+      }
+
+      .service-card:nth-child(1) .icon { background: linear-gradient(135deg, rgba(245,191,88,0.24), rgba(216,110,74,0.18)); }
+      .service-card:nth-child(2) .icon { background: linear-gradient(135deg, rgba(13,93,80,0.12), rgba(80,192,175,0.2)); }
+      .service-card:nth-child(3) .icon { background: linear-gradient(135deg, rgba(216,110,74,0.18), rgba(245,191,88,0.2)); }
+      .service-card:nth-child(4) .icon { background: linear-gradient(135deg, rgba(13,93,80,0.14), rgba(245,191,88,0.16)); }
+
+      .promo-banner {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 1.4rem;
+        align-items: center;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, rgba(13,93,80,0.08), rgba(245,191,88,0.12));
+        border: 1px solid rgba(13, 93, 80, 0.08);
+        border-radius: var(--radius-xl);
+      }
+
+      .promo-banner h3 {
+        margin: 0 0 0.6rem;
+        font-size: clamp(1.7rem, 2.4vw, 2.5rem);
+        line-height: 1.08;
+      }
+
+      .promo-banner p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1.2rem;
+      }
+
+      .check-list li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .check-list li::before {
+        content: '•';
+        color: var(--forest);
+        font-size: 1.4rem;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .portrait {
+        min-height: 500px;
+        border-radius: 28px;
+        background:
+          linear-gradient(160deg, rgba(13,93,80,0.25), rgba(13,93,80,0.08)),
+          linear-gradient(135deg, #efe4d3, #f9f6f2);
+        border: 1px solid rgba(31, 42, 43, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .portrait::before {
+        content: '';
+        position: absolute;
+        width: 70%;
+        height: 70%;
+        right: 10%;
+        bottom: -8%;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, rgba(255,255,255,0.95), rgba(255,255,255,0.28) 52%, transparent 58%);
+      }
+
+      .portrait::after {
+        content: 'М';
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(10rem, 18vw, 18rem);
+        color: rgba(31,42,43,0.15);
+      }
+
+      .about-copy {
+        font-size: 1.04rem;
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+
+      .about-copy strong {
+        color: var(--ink);
+      }
+
+      .process {
+        background: rgba(255,255,255,0.2);
+      }
+
+      .step-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+
+      .step-card {
+        position: relative;
+        padding: 1.4rem 1.4rem 1.2rem;
+      }
+
+      .step-number {
+        width: 2.6rem;
+        height: 2.6rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--forest), #177d6d);
+        color: white;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .step-card h3 {
+        margin: 0 0 0.8rem;
+        font-size: 1.3rem;
+      }
+
+      .step-card p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .price-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .price-card.featured {
+        background: linear-gradient(180deg, rgba(13,93,80,0.06), rgba(255,255,255,0.7));
+        border-color: rgba(13,93,80,0.18);
+      }
+
+      .price-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        background: rgba(13,93,80,0.1);
+        color: var(--forest);
+        font-weight: 800;
+      }
+
+      .price-card h3 {
+        margin: 0 0 0.6rem;
+        font-size: 1.55rem;
+      }
+
+      .price-card .sub {
+        margin: 0 0 1rem;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+
+      .money {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.4rem;
+        margin: 1.1rem 0 1.2rem;
+      }
+
+      .money strong {
+        font-size: clamp(2.1rem, 2.8vw, 3rem);
+        line-height: 1;
+      }
+
+      .money span {
+        color: var(--ink-soft);
+        font-weight: 700;
+      }
+
+      .price-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .price-card li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      .price-card li::before {
+        content: '–';
+        color: var(--forest);
+        font-weight: 800;
+      }
+
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .contact-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        padding: 0.9rem 1rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.5);
+        border: 1px solid rgba(31,42,43,0.08);
+      }
+
+      .contact-item .icon {
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(13,93,80,0.12), rgba(245,191,88,0.18));
+        color: var(--forest);
+        font-weight: 800;
+      }
+
+      .contact-item strong {
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .contact-item span,
+      .contact-item a {
+        color: var(--ink-soft);
+      }
+
+      .contact-box {
+        display: grid;
+        gap: 1.1rem;
+      }
+
+      .mini-cta {
+        display: block;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      .m-r-5 {
+        margin-right: 5%;
+      }
+
+      .faq {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .faq li {
+        padding: 1rem 1.1rem;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.48);
+        border: 1px solid rgba(31,42,43,0.08);
+        color: var(--ink-soft);
+      }
+
+      .faq strong {
+        color: var(--ink);
+      }
+
+      footer {
+        padding: 1.5rem 0 2.5rem;
+        color: var(--ink-soft);
+      }
+
+      .footer-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(31, 42, 43, 0.08);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid,
+        .promo-banner {
+          grid-template-columns: 1fr;
+        }
+
+        .service-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .pricing-grid,
+        .step-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 0.8rem 0;
+        }
+
+        .nav-links {
+          width: 100%;
+          order: 3;
+        }
+
+        .hero {
+          padding-top: 2.5rem;
+        }
+
+        .hero-points {
+          grid-template-columns: 1fr;
+        }
+
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mock-window {
+          min-height: 440px;
+        }
+
+        .mock-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .floating-badge {
+          right: 0.5rem;
+          bottom: 0.5rem;
+        }
+      }
+
+      :root {
+        --bg: #f1f1f1;
+        --bg-alt: #ebebf0;
+        --panel: #ffffff;
+        --panel-strong: #ffffff;
+        --ink: #111d1f;
+        --ink-soft: #5e5e63;
+        --line: #d2d2d7;
+        --forest: #0071e3;
+        --forest-strong: #0066cc;
+        --sun: #8abfff;
+        --coral: #0071e3;
+        --sand: #e8e8ed;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.07);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+      }
+
+      html {
+        scroll-padding-top: 6rem;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a:focus-visible,
+      .button:focus-visible {
+        outline: 3px solid rgba(0, 113, 227, 0.55);
+        outline-offset: 4px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(245, 245, 247, 0.88);
+        border-bottom: 1px solid rgba(29, 29, 31, 0.08);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+      }
+
+      .nav {
+        min-height: 68px;
+        gap: 1.25rem;
+      }
+
+      .brand {
+        gap: 0.6rem;
+        font-size: 1.05rem;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9px;
+        background: var(--ink);
+        box-shadow: none;
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        gap: clamp(0.8rem, 2vw, 1.6rem);
+        color: var(--ink);
+        font-size: 0.86rem;
+        font-weight: 500;
+      }
+
+      .nav-links a {
+        padding: 0.5rem 0;
+      }
+
+      .nav-links a::after {
+        bottom: 0;
+        height: 1px;
+        background: var(--ink);
+      }
+
+      .nav-cta {
+        padding: 0.68rem 1rem;
+        border: 0;
+        background: var(--forest);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--forest-strong);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        padding: clamp(5rem, 12vw, 9.5rem) 0 clamp(4rem, 8vw, 6rem);
+        text-align: center;
+      }
+
+      .hero-grid {
+        display: block;
+      }
+
+      .hero-copy {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero .eyebrow {
+        display: none;
+      }
+
+      .hero h1 {
+        max-width: 900px;
+        margin: 0 auto 1rem;
+        font-size: clamp(3.2rem, 8.5vw, 7rem);
+        line-height: 1.1;
+        font-weight: 700;
+      }
+
+      .hero h1 .accent {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+
+      .hero-copy > p:not(.eyebrow) {
+        max-width: 620px;
+        margin: 1.25rem auto 1.8rem;
+        color: var(--ink);
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        line-height: 1.5;
+      }
+
+      .hero-actions {
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+      }
+
+      .button {
+        min-height: 48px;
+        padding: 0.8rem 1.4rem;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      }
+
+
+      .button-primary:hover {
+        background: var(--forest-strong);
+      }
+
+      .button-secondary {
+        border-color: var(--forest);
+        background: transparent;
+        color: var(--forest);
+      }
+
+      .button-secondary:hover {
+        background: rgba(0, 113, 227, 0.08);
+      }
+
+      .hero-points {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .hero-points li {
+        padding: 0.5rem 0.75rem;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(29, 29, 31, 0.055);
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      .hero-points li::before {
+        display: none;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .section {
+        padding: clamp(3rem, 6vw, 5rem) 0;
+        scroll-margin-top: 5.5rem;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin: 0 auto 2.5rem;
+        text-align: center;
+      }
+
+      .eyebrow {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--forest);
+        font-size: 0.78rem;
+        text-transform: none;
+      }
+
+      .section-head h2,
+      .about-copy h2,
+      .contact-card h2 {
+        margin: 0.65rem 0 0.8rem;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 1.02;
+      }
+
+      .section-head p {
+        max-width: 640px;
+        margin: 0 auto;
+        color: var(--ink-soft);
+        font-size: 1.08rem;
+        line-height: 1.6;
+      }
+
+      .trust-bar {
+        justify-content: center;
+        margin: 0;
+        gap: 0.7rem;
+      }
+
+      .trust-item {
+        padding: 0.65rem 1rem;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      #services {
+        background: #fff;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .panel {
+        border: 1px solid rgba(29, 29, 31, 0.08);
+        border-radius: var(--radius-lg);
+        background: #fff;
+        box-shadow: none;
+      }
+
+      .service-card {
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .service-card .icon {
+        width: 2.8rem;
+        height: 2.8rem;
+        margin-bottom: 1.2rem;
+        border-radius: 50%;
+        background: #f2f2f7 !important;
+        color: var(--forest);
+        font-size: 0.9rem;
+      }
+
+      .service-card h3,
+      .step-card h3 {
+        font-size: 1.25rem;
+      }
+
+      .service-card p,
+      .step-card p,
+      .price-card .sub {
+        color: var(--ink-soft);
+      }
+
+      .service-card .price {
+        border-color: var(--line);
+        color: var(--forest);
+      }
+
+      .promo-banner {
+        padding: clamp(1.5rem, 4vw, 3rem);
+        border: 0;
+        border-radius: var(--radius-xl);
+        background: #e8f2ff;
+      }
+
+      .promo-banner h3 {
+        max-width: 540px;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+      }
+
+      .promo-banner p,
+      .check-list li {
+        color: var(--ink-soft);
+      }
+
+      .check-list li::before {
+        color: var(--forest);
+      }
+
+      .seo-growth {
+        background: #f5f7fb;
+      }
+
+      .seo-copy {
+        max-width: 980px;
+        margin: 0 auto;
+        color: var(--ink-soft);
+        font-size: 1.04rem;
+        line-height: 1.7;
+      }
+
+      .seo-copy p,
+      .seo-copy li {
+        color: var(--ink-soft);
+      }
+
+      .seo-copy h3 {
+        margin: 1.3rem 0 0.7rem;
+        color: var(--ink);
+        font-size: clamp(1.6rem, 2vw, 2.2rem);
+        line-height: 1.15;
+      }
+
+      .seo-copy ol {
+        margin: 1.1rem 0 0;
+        padding-left: 1.5rem;
+      }
+
+      .seo-copy ol > li {
+        margin-bottom: 1.2rem;
+      }
+
+      .seo-copy ol > li::marker {
+        color: var(--forest);
+        font-weight: 700;
+      }
+
+      .seo-copy .highlight {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .seo-copy .check-list {
+        margin-top: 1rem;
+      }
+
+      .seo-copy blockquote {
+        margin: 1.25rem 0;
+        padding: 0.9rem 1rem 0.9rem 1.1rem;
+        border-left: 3px solid var(--forest);
+        background: rgba(0, 113, 227, 0.04);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .about-grid {
+        gap: clamp(2rem, 6vw, 5rem);
+      }
+
+      .portrait {
+        min-height: 420px;
+        border: 0;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(145deg, #dcecff, #f1f6fc);
+      }
+
+      .portrait::before {
+        background: radial-gradient(circle at center, rgba(255,255,255,0.9), rgba(255,255,255,0.25) 52%, transparent 58%);
+      }
+
+      .portrait::after {
+        color: rgba(0, 113, 227, 0.13);
+      }
+
+      .about-copy {
+        color: var(--ink-soft);
+      }
+
+      .about-copy strong {
+        color: var(--ink);
+      }
+
+      .process {
+        background: #f0f0f5;
+      }
+
+      .step-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .step-card {
+        padding: 1.5rem;
+      }
+
+      .step-number {
+        width: 2.4rem;
+        height: 2.4rem;
+        background: #e8f2ff;
+        color: var(--forest);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .price-card {
+        padding: 1.7rem;
+      }
+
+      .price-card.featured {
+        border-color: rgba(0, 113, 227, 0.35);
+        background: #f6faff;
+      }
+
+      .price-badge {
+        padding: 0.45rem 0.7rem;
+        background: #e8f2ff;
+        color: var(--forest);
+        font-size: 0.68rem;
+        text-transform: none;
+      }
+
+      .price-card h3 {
+        font-size: 1.4rem;
+      }
+
+      .money strong {
+      }
+
+      .price-card li::before {
+        color: var(--forest);
+      }
+
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 1rem;
+      }
+
+      .contact-card,
+      .contact-box {
+        padding: clamp(1.4rem, 3vw, 2.2rem);
+      }
+
+      .contact-item,
+      .faq li {
+        border-color: rgba(29, 29, 31, 0.08);
+        background: #f5f5f7;
+      }
+
+      .contact-item .icon {
+        background: #e8f2ff;
+        color: var(--forest);
+      }
+
+      .contact-item span,
+      .contact-item a,
+      .faq li {
+        color: var(--ink-soft);
+      }
+
+      .faq strong {
+        color: var(--ink);
+      }
+
+      footer {
+        background: #fff;
+      }
+
+      .footer-wrap {
+        border-color: var(--line);
+      }
+
+      .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .theme-toggle,
+      .menu-toggle {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+        font: inherit;
+        font-size: 1.15rem;
+        cursor: pointer;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .menu-toggle span {
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: currentColor;
+        transition: transform 0.2s ease;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:first-child {
+        transform: translateY(3.5px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:last-child {
+        transform: translateY(-3.5px) rotate(-45deg);
+      }
+
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background: var(--bg-alt);
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #15171a;
+        --bg-alt: #202329;
+        --panel: #1d2025;
+        --panel-strong: #24282e;
+        --ink: #f1f3f5;
+        --ink-soft: #b0b7c1;
+        --line: #383e47;
+        --forest: #79b8ff;
+        --forest-strong: #9acaff;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      html[data-theme="dark"] body {
+        background: var(--bg);
+      }
+
+      html[data-theme="dark"] .site-header {
+        background: rgba(21, 23, 26, 0.9);
+        border-color: var(--line);
+      }
+
+      html[data-theme="dark"] #services,
+      html[data-theme="dark"] footer,
+      html[data-theme="dark"] .panel {
+        background: var(--panel);
+      }
+
+      html[data-theme="dark"] .promo-banner {
+        background: #202a35;
+      }
+
+      html[data-theme="dark"] .seo-growth {
+        background: #191c21;
+      }
+
+      html[data-theme="dark"] .process {
+        background: #1b1e23;
+      }
+
+      html[data-theme="dark"] .price-card.featured {
+        background: #1c2834;
+      }
+
+      html[data-theme="dark"] .contact-item,
+      html[data-theme="dark"] .faq li {
+        background: #24282e;
+        border-color: var(--line);
+      }
+
+      html[data-theme="dark"] .contact-item .icon,
+      html[data-theme="dark"] .step-number,
+      html[data-theme="dark"] .price-badge {
+        background: #29394a;
+      }
+
+      html[data-theme="dark"] .service-card .icon {
+        background: #29313a !important;
+      }
+
+      html[data-theme="dark"] .hero-points li {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      html[data-theme="dark"] .seo-copy blockquote {
+        background: rgba(121, 184, 255, 0.08);
+      }
+
+      html[data-theme="dark"] .portrait {
+        background: linear-gradient(145deg, #253547, #1d252e);
+      }
+
+      html[data-theme="dark"] .portrait::before {
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04) 52%, transparent 58%);
+      }
+
+      html[data-theme="dark"] .portrait::after {
+        color: rgba(121, 184, 255, 0.16);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid,
+        .promo-banner {
+          grid-template-columns: 1fr;
+        }
+
+        .service-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .pricing-grid,
+        .step-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          min-height: 60px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0;
+        }
+
+        .nav-links {
+          display: none;
+          order: 3;
+          flex-basis: 100%;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.5rem 0 1rem;
+          white-space: normal;
+        }
+
+        .nav-links.is-open {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-links a {
+          padding: 0.75rem 0;
+        }
+
+        .nav-cta {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+        }
+
+        .hero {
+          padding: 5rem 0 4rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(3rem, 13vw, 5rem);
+        }
+
+        .hero-points {
+          gap: 0.45rem;
+        }
+
+        .hero-points li {
+          font-size: 0.76rem;
+        }
+
+        .service-grid,
+        .pricing-grid,
+        .step-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .portrait {
+          min-height: 320px;
+        }
+
+        .section {
+          padding: 4rem 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#home" aria-label="Full Сайт">
+          <span class="brand-mark">F</span>
+          <span>Full Сайт</span>
+        </a>
+
+        <nav class="nav-links" id="primary-navigation" aria-label="Основна навігація">
+          <a href="#home">Головна</a>
+          <a href="#services">Послуги і ціни</a>
+          <a href="#promo">Просування сайтів</a>
+          <a href="#contacts">Контакти</a>
+        </nav>
+
+        <div class="header-controls">
+          <button class="theme-toggle" type="button" aria-label="Увімкнути темну тему" title="Увімкнути темну тему">
+            <span aria-hidden="true">☾</span>
+          </button>
+          <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="primary-navigation">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Розробка сайтів під ключ</span>
+            <h1>
+              Сайт під ключ
+            </h1>
+            <p>
+              Ви отримуєте готовий сайт <br>без прихованих витрат. <br>Я створюю візуально сильні,<br>
+              адаптивні проєкти для бізнесу — <br>від простих лендінгів до повноцінних магазинів.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#services">Дивитися послуги</a>
+              <a class="button button-secondary" href="#contacts">Написати в Telegram</a>
+            </div>
+
+            <ul class="hero-points" aria-label="Переваги роботи">
+              <li>Адаптивний дизайн</li>
+              <li>SEO-орієнтована структура</li>
+              <li>Підтримка після запуску</li>
+            </ul>
+            <ul class="hero-points" aria-label="Переваги роботи">
+              <li>Кібербезпека</li>
+              <li>Правки</li>
+              <li>Редизайн</li>
+              <li>Підтримка</li>
+            </ul>
+          </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <h2>Послуги і ціни</h2>
+            <p>
+              У кожному проєкті важливі не тільки візуальна краса, а й чітка структура, зручність
+              для користувача та продажі через правильну подачу інформації.
+            </p>
+          </div>
+
+          <div class="service-grid">
+            <article class="panel service-card">
+              <div class="icon">01</div>
+              <h3>Лендінг</h3>
+              <p>
+                Простий односторінковий сайт для швидкого пояснення продукту або послуги та
+                отримання заявок.
+              </p>
+              <span class="price">від 4 000 грн</span>
+            </article>
+
+            <article class="panel service-card">
+              <div class="icon">02</div>
+              <h3>Сайт-візитка</h3>
+              <p>
+                Професійний сайт 3 – 7 сторінок з мінімалістичним дизайном і функціоналом для
+                успішного знайомства з клієнтами.
+              </p>
+              <span class="price">від 5 000 грн</span>
+            </article>
+
+            <article class="panel service-card">
+              <div class="icon">03</div>
+              <h3>Багатосторінковий сайт</h3>
+              <p>
+                Структурований ресурс для компаній, який зручно подає інформацію про послуги,
+                кейси та контакти.
+              </p>
+              <span class="price">від 6 000 грн</span>
+            </article>
+
+            <article class="panel service-card">
+              <div class="icon">04</div>
+              <h3>Інтернет-магазин</h3>
+              <p>
+                Готовий магазин на WordPress з каталогом, кошиком, оплатою та зручним переглядом
+                товарів.
+              </p>
+              <span class="price">від 7 000 грн</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about">
+        <div class="container about-grid">
+          <div class="portrait" aria-label="Портрет розробника"></div>
+
+          <div class="about-copy">
+            <span class="eyebrow">Про розробника</span>
+            <p style="margin: 1rem 0 0.8rem; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.05; letter-spacing: 0.01em;">
+              Привіт! Мене звати Устименко <strong>Микола</strong>, я WEB Full-Stack программіст і створюю сайти, які приносять більше довіри й звернень.
+            </p>
+            <p>
+              <strong>Працюю комплексно</strong> — від структури та візуальної концепції до
+              адаптації під мобільні пристрої й запуску готового проєкту.
+            </p>
+            <p>
+              Для мене важлива не просто краса, а результат: зрозумілий функціонал, зручний UX і
+              чіткий сценарій взаємодії з клієнтом. Я веду кожен етап особисто, без посередників і
+              без втрати якості.
+            </p>
+            <p>
+              Вам не потрібно розбиратися в дизайні або WordPress — я пояснюю все доступно та веду вас
+              від ідеї до готового сайту.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contacts">
+        <div class="container">
+
+          <div class="panel contact-box">
+            <div>
+              <span class="eyebrow">Пишіть</span>
+              <h3 style="margin: 1rem 0 0.7rem; font-size: 1.7rem; letter-spacing: 0.02em;">
+                Розкажіть про завдання
+              </h3>
+            </div>
+
+            <p style="margin: 0; color: var(--ink-soft); line-height: 1.7;">
+              Надішліть короткий опис проєкту, бюджет, терміни та ваші очікування — я підкажу, як
+              краще реалізувати сайт під ваш бізнес.
+            </p>
+
+            <div class="mini-cta">
+              <a class="button button-primary m-r-5" href="https://t.me/FullSiteAdmin" target="_blank" rel="noreferrer">Написати в telegram</a>
+              <a class="button button-primary" href="https://www.instagram.com/ustimenko_mikola_8" target="_blank" rel="noreferrer">Написати в instagram</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Етапи</span>
+            <h2>Як проходить замовлення та розробка сайту</h2>
+          </div>
+
+          <div class="step-grid">
+            <article class="panel step-card">
+              <div class="step-number">1</div>
+              <h3>Заповнення брифу</h3>
+              <p>Ви заповнюєте бриф, я розраховую вартість і узгоджую технічне завдання.</p>
+            </article>
+
+            <article class="panel step-card">
+              <div class="step-number">2</div>
+              <h3>Встановлення терміну</h3>
+              <p>Фіксуємо дату початку та тривалість виконання робіт.</p>
+            </article>
+
+            <article class="panel step-card">
+              <div class="step-number">3</div>
+              <h3>Аналіз та підготовка</h3>
+              <p>Проводжу підготовчі роботи, аналіз конкурентів і збір матеріалів.</p>
+            </article>
+
+            <article class="panel step-card">
+              <div class="step-number">4</div>
+              <h3>Створення сайту</h3>
+              <p>Спочатку — версія для десктопа, потім адаптація під смартфони та правки.</p>
+            </article>
+
+            <article class="panel step-card">
+              <div class="step-number">5</div>
+              <h3>Технічні налаштування</h3>
+              <p>SEO, пошукові системи, robots.txt, sitemap, базова оптимізація і налаштування.</p>
+            </article>
+
+            <article class="panel step-card">
+              <div class="step-number">6</div>
+              <h3>Завершення роботи</h3>
+              <p>Перевірка сайту, оплата, передача доступів, паролів і відео-інструкції.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" aria-label="Питання">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Питання</span>
+            <h3>Відповіді</h3>
+          </div>
+
+          <ul class="faq">
+            <li><strong>Чи включено правки?</strong> Так, після запуску доступні внесення виправлень.</li>
+            <li><strong>У мене немає дизайну. Чи можете ви зробити сайт?</strong> Так. Можемо працювати за сайтом-референсом або простим макетом, який погодимо разом, чи порадити дизайнера. Напишіть у формі замовлення, що у вас уже є.</li>
+            <li><strong>Чи можна замовити підтримку сайту, який робили не ви?</strong> Так. Спершу коротко перевіряємо тему, плагіни та хостинг і кажемо, чи потрібно щось виправити, щоб сайт можна було безпечно підтримувати.</li>
+
+
+            <li><strong>Чи підійде для малого бізнесу?</strong> Так, цей формат підходить для особистих брендів, фрілансерів та компаній.</li>
+            <li><strong>Чи можна адаптувати під мобільні пристрої?</strong> Так, кожен проект роблю адаптивним під телефон, планшет і десктоп.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="promo">
+        <div class="container">
+          <div class="promo-banner">
+            <div>
+              <h2 class="eyebrow">Просування сайтів</h2>
+              <h3>Ваш сайт матиме не лише гарний вигляд, а й розвиток у пошуку.</h3>
+            </div>
+
+            <div>
+              <p>
+                Додаткові послуги для покращення ефективності: контекстна реклама, просування в
+                Google, онлайн-оплата, інтеграція з соцмережами, багатомовність та технічна
+                підтримка.
+              </p>
+              <ul class="check-list">
+                <li>SEO-структура та базове налаштування</li>
+                <li>Розкрутка в пошукових системах</li>
+                <li>Підключення аналітики та форм зворотного зв’язку</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section seo-growth">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Як ми просуваємо</span>
+            <h2>Сайт у Google</h2>
+          </div>
+
+          <div class="seo-copy">
+            <p>
+              Щоб вивести Ваш сайт у пошуку Google на перші місця, ми починаємо з детального
+              вивчення Вашої бізнес-діяльності. Які Ви пропонуєте послуги, продаєте товари або,
+              можливо, подаєте корисну інформацію на інформаційному сайті. На початку важливо
+              зрозуміти, хто є Вашим потенційним клієнтом в інтернеті.
+            </p>
+
+            <p>
+              Ми формуємо образ майбутнього покупця (клієнта) і заглиблюємося в його психологію
+              поведінки, щоб зрозуміти, як найкраще піднести контент, щоб отримати бажані
+              конверсії (продажу). Після цього ми переходимо до детальної оптимізації сайту, що
+              складається з наступних кроків.
+            </p>
+
+            <ol>
+              <li>
+                <h3>Комплексний аудит</h3>
+                <p>
+                  Цей аудит ділиться на три типи: технічний, комерційний та контентний. Ми
+                  перевіряємо вручну та за допомогою програм усі важливі технічні параметри, які
+                  прямим чином впливають на досягнення стійких позицій у пошуку. Чи є дублікати
+                  сторінок, чи віддають сторінки правильну відповідь сервера, чи існують циклічні
+                  посилання тощо.
+                </p>
+                <p>
+                  Щодо комерційних факторів важливо розуміти, що вони повинні максимально розкривати
+                  можливості вашої компанії: портфоліо робіт, кілька телефонів, різні способи
+                  комунікації, форми зв’язку, калькулятори, філії. Дуже уважно дивимося на
+                  контентну частину. Як кажуть, контент — король. Які є на сайті тексти, фото,
+                  відео, інфографіка. Після детального аналізу сайту ми пропонуємо покращення, а
+                  при виявленні помилок відправляємо спеціалістам на виправлення.
+                </p>
+              </li>
+
+              <li>
+                <h3>Підбір ключових слів та структура сайту</h3>
+                <p>
+                  Один із найбільш відповідальних етапів. Саме зібрана семантика визначає, хто
+                  відвідуватиме ваш сайт. Тематичні ключові слова впроваджуються на сторінки з
+                  контентом і за їх набором у пошуку заходять люди на цільові сторінки.
+                </p>
+                <p>
+                  Припустимо, нам потрібні в інтернет-магазині покупці мобільних телефонів Nokia.
+                  Ми збираємо всі ключі на цю тему з приставкою “купити”, “київ”, “ціна”, “вартість”
+                  та закінчення з моделями. Просимо копірайтера написати текст на тему “Купити
+                  телефон Nokia” і правильно розмістити ключові слова за всіма заголовками,
+                  абзацами та списками. Також додатково підбираємо LSI слова, які допомагають
+                  детальніше розкрити тему статті і зробити її експертною. Коли текст
+                  проіндексується, алгоритми пошукача зрозуміють, що сторінка релевантна нашому
+                  запиту і покажуть її користувачам, які шукають товар або послугу за цими словами.
+                </p>
+              </li>
+
+              <li>
+                <h3>Декілька слів про структуру сайту</h3>
+                <p>
+                  Вона повинна бути чіткою, компактною та пропрацьованою. Структура створюється
+                  двома способами: з урахуванням ключових слів, які групуються за змістом і на
+                  основі наявної послуги або товару. Важливо подивитися на структуру, яка реалізована
+                  в Топ-10 видачі, і намагатись прирівнятися до конкурентів за кількістю розділів.
+                </p>
+              </li>
+
+              <li>
+                <h3>Зовнішня оптимізація</h3>
+                <p>
+                  Як би банально не звучало, але через роки просування ми говоримо: “Друзі,
+                  купуйте якісні посилання під Google”. І це справді так. У пошуковій системі
+                  Google посилання та їхнє ранжування продовжує займати найважливіше місце,
+                  особливо коли ми говоримо про просування комерційних сайтів.
+                </p>
+                <p>
+                  Секрет полягає в тому, що профіль має зробити максимально природним і різноманітним.
+                  Насамперед дивимося на трастові тематичні майданчики, звертаємось на форуми, щоб
+                  залишити згадку компанії або сайту, робимо поширення про нашу діяльність у соц.
+                  мережах тощо.
+                </p>
+              </li>
+
+              <li>
+                <h3>Оптимізація юзабіліті</h3>
+                <p>
+                  Ну і як кажуть маркетологи: “Не одними посиланнями”. Припустимо, ми досягли
+                  топових позицій, але чомусь продажів не так уже й багато. Щоб зрозуміти, що
+                  можна змінити на сайті для покращення конверсій, ми підключаємо аналітику і за
+                  певними метриками дивимося, як поводиться користувач на сторінках. Можливо,
+                  йому заважає якийсь блок або не подобається колір кнопки.
+                </p>
+                <p>
+                  Ми готові підлаштувати всі параметри під переваги Ваших клієнтів. Мистецтво
+                  сучасної розкрутки сайту полягає в тому, щоб зрозуміти клієнта, його бажання та
+                  потреби і у найкращому вигляді подати рішення через якісний контент.
+                </p>
+              </li>
+            </ol>
+
+            <h3>Що таке просування сайтів?</h3>
+            <p>
+              Web-просування сайту – це процес всебічного розвитку сайту з метою отримати
+              прибуток від продажу товарів та послуг, що надаються на ресурсі. Знаходження у топі
+              дозволяє залучати на сайт більше потенційних клієнтів. А внутрішня структура та
+              грамотне наповнення дозволяє перетворити потенційних клієнтів на реальних покупців.
+            </p>
+
+            <p>
+              На самому початку просування сайту необхідно зробити SEO-аудит та технічну
+              оптимізацію. Усунути всі помилки, які заважатимуть у майбутньому. Щоб Ваш
+              інтернет-ресурс постійно знаходився в хорошому стані, у нас існує послуга
+              <span class="highlight">підтримка сайту</span>, в якій враховуються всі важливі та
+              актуальні рекомендації від Google.
+            </p>
+
+            <h3>SEO-оптимізація та просування сайтів включають:</h3>
+            <ul class="check-list">
+              <li>технічний аналіз поточного сайту та виявлення помилок;</li>
+              <li>що заважають просуванню;</li>
+              <li>усунення помилок;</li>
+              <li>аналітичний огляд;</li>
+              <li>постановка цілей просування;</li>
+              <li>підбір ключових слів;</li>
+              <li>створення контенту для сайту;</li>
+              <li>структурна оптимізація сайту;</li>
+              <li>створення посилального оточення;</li>
+              <li>звітність.</li>
+            </ul>
+
+            <h3>Чому просування сайту варто довірити професіоналам?</h3>
+            <p>
+              При самостійному просуванні або виборі несумлінного підрядника ви дуже ризикуєте.
+              Найлояльніший варіант за такого розкладу – це відсутність результату взагалі і втрата
+              фінансів. Частіше, непрофесійне розкручування сайту веде до більш згубних наслідків:
+            </p>
+            <ul class="check-list">
+              <li>попадання ресурсу під фільтр пошукової видачі та санкції з боку пошукової системи;</li>
+              <li>повне блокування сайту.</li>
+            </ul>
+            <p>
+              І ось цих наслідків буде потім найважче позбутися. Ваші клієнти підуть до
+              конкурента, прибуток буде втрачено, а репутація неабияк зіпсована.
+            </p>
+
+            <h3>Комплексна SEO розкрутка сайту в Україні</h3>
+            <p>
+              Щоб почати розкручування вашого сайту, скористайтесь допомогою професіоналів. Наша
+              комплексна розкрутка включає первинну оптимізацію сайту, SEO, представництво в
+              соціальних мережах (SMM), контекстну рекламу та інтернет-присутність. Замовити
+              пошукове просування у SEO-студії «Full Сайт» ви можете прямо зараз по будь-якому
+              зручному каналу зв’язку. Забезпечимо постійний потік лояльних клієнтів на ваш сайт.
+            </p>
+
+            <h3>Підтримка сайту після просування</h3>
+            <p>
+              Конкуренти не сплять, а відстежують способи Вашого просування. Тому не варто думати,
+              що після виходу в ТОП пошукових систем можна буде розслабитися та спочивати на
+              лаврах.
+            </p>
+            <blockquote>
+              Головне — це не потрапити до ТОП 3 Google, а якомога довше там утриматися!
+            </blockquote>
+            <p>
+              Щоб утриматися на вершині Олімпу Google, потрібно займатися комплексною підтримкою
+              сайту після просування. Якщо для основного SEO-просування потрібно купити 30–50
+              посилань і додати 15 продаючих SEO-текстів на місяць, то для утримання позицій після
+              SEO-розкрутки важливо додавати на веб-проект мінімум 2–3 тематичні статті на місяць
+              з внутрішньою перелінковкою на цільові сторінки.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <span>© 2026 Full Сайт</span>
+        <span>Розробка сайтів під ключ</span>
+      </div>
+    </footer>
+    <script>
+      const themeToggle = document.querySelector('.theme-toggle');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navigation = document.querySelector('.nav-links');
+      const savedTheme = localStorage.getItem('full-site-theme');
+
+      if (savedTheme === 'dark') {
+        document.documentElement.dataset.theme = 'dark';
+      }
+
+      function updateThemeToggle() {
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        const label = isDark ? 'Увімкнути світлу тему' : 'Увімкнути темну тему';
+        themeToggle.setAttribute('aria-label', label);
+        themeToggle.setAttribute('title', label);
+        themeToggle.querySelector('span').textContent = isDark ? '☀' : '☾';
+      }
+
+      updateThemeToggle();
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.dataset.theme !== 'dark';
+        document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+        localStorage.setItem('full-site-theme', isDark ? 'dark' : 'light');
+        updateThemeToggle();
+      });
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Відкрити меню' : 'Закрити меню');
+        navigation.classList.toggle('is-open', !isOpen);
+      });
+
+      navigation.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLAnchorElement) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Відкрити меню');
+          navigation.classList.remove('is-open');
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Відкрити меню');
+          navigation.classList.remove('is-open');
+          menuToggle.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
